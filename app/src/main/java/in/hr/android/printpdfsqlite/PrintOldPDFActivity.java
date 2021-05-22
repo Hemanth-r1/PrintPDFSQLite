@@ -29,11 +29,9 @@ public class PrintOldPDFActivity extends AppCompatActivity {
     Button printButton;
     EditText editText;
     DataTable dataTable;
-     HelperSQL helperSQL;
-     SQLiteDatabase database;
-
-
-     Date date = new Date();
+    HelperSQL helperSQL;
+    SQLiteDatabase database;
+    Date date = new Date();
     String datePattern = "dd-MM-YYYY";
     SimpleDateFormat dateFormat = new SimpleDateFormat(datePattern);
 
@@ -59,12 +57,11 @@ public class PrintOldPDFActivity extends AppCompatActivity {
                 .item("amount", 5)
                 .build();
 
-        ArrayList<DataTableRow>rows = new ArrayList<>();
-        String[]column = {"invoiceNo", "customerName", "date", "item", "amount"};
-        Cursor cursor = database.query("PdfTable", column, null, null, null,null, null);
+        ArrayList<DataTableRow> rows = new ArrayList<>();
+        String[] column = {"invoiceNo", "customerName", "date", "item", "amount"};
+        Cursor cursor = database.query("PdfTable", column, null, null, null, null, null);
 
-
-        for(int i =0 ; i< cursor.getCount(); i++){
+        for (int i = 0; i < cursor.getCount(); i++) {
 
             cursor.moveToNext();
             DataTableRow row = new DataTableRow.Builder()
@@ -75,7 +72,6 @@ public class PrintOldPDFActivity extends AppCompatActivity {
                     .value(String.valueOf(cursor.getInt(4)))
                     .build();
 
-
             rows.add(row);
         }
 
@@ -84,7 +80,6 @@ public class PrintOldPDFActivity extends AppCompatActivity {
         dataTable.inflate(this);
 
         printSelectedInvoice();
-
     }
 
     private void printSelectedInvoice() {

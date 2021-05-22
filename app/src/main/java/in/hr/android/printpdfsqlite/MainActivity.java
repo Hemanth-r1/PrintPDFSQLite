@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
         callFindVewById();
         helperSQL = new HelperSQL(this);
         sqLiteDatabase = helperSQL.getWritableDatabase();
-
         callOnClickListener();
     }
 
@@ -67,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
         itemPrice = new int[]{100,200,300,400,500};
         arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, itemList);
         spinner.setAdapter(arrayAdapter);
-
     }
 
     private void callOnClickListener() {
